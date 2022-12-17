@@ -1,9 +1,10 @@
 import './App.css';
+import Santa from "./components/Santa";
 
 function App() {
   return (
     <div className="App">
-      <h1>お願いサンタさん</h1>
+      <Santa />
     </div>
   );
 }
