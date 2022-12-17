@@ -26,7 +26,6 @@ services:
       - PMA_HOSTS='santa_mysql'
       - PMA_USER=root
       - PMA_PASSWORD=root
-
     ports:
       - "8080:80"
     volumes:
