@@ -8,6 +8,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
       TZ: 'Asia/Tokyo'
     volumes:
       - ./docker/db/data:/var/lib/mysql  
