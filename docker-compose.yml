@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  santa_mysql:
+    image: mysql:5.7
+    container_name: santa_mysql
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - ./docker/db/data:/var/lib/mysql  
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/db/sql:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+  santa_phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: santa_phpmyadmin
+    depends_on:
+      - santa_mysql
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS='santa_mysql'
+    ports:
+      - "3000:80"
+    volumes:
+      - ./docker/phpmyadmin/sessions:/sessions
