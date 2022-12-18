@@ -1,0 +1,14 @@
+.Button_button
+{
+    border-radius:10px;
+    color: white;
+    background-color: red;
+    height: 40px;
+    width: 100px;
+    font-family: "Yu Gothic";
+}
+
+.button-submit-message
+{
+    text-align: center;
+}
