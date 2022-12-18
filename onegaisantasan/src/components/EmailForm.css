@@ -1,0 +1,15 @@
+form
+{
+    display: flex;
+    justify-content: center;
+}
+
+.email-message-error
+{
+    color: red;
+}
+
+.email-submit-message
+{
+    text-align: center;
+}

@@ -1,0 +1,63 @@
+h1
+{
+    padding-top: 100px;
+    text-align: center;
+    font-family: "Yu Gothic";
+}
+
+h2
+{
+    font-family: "Yu Gothic";
+}
+
+
+
+.NewCreate_text1
+{
+    display: flex;
+    justify-content: center;
+}
+
+.NewCreate_text2
+{
+    display:flex;
+    justify-content: center;
+    
+}
+
+.NewCreate_text3
+{
+    display:flex;
+    justify-content: center;
+}
+
+.NewCreate_Error
+{
+    display: none;
+    text-align: center;
+    color: red;
+}
+
+input
+{
+    height: 30px;
+    width: 200px;
+    position: relative;
+    top: 20px;
+}
+
+.NewCreate_button
+{
+    text-align: center;
+    padding-top:40px ;
+}
+
+.NewCreate_button_button
+{
+    border-radius:10px;
+    color: white;
+    background-color: red;
+    height: 40px;
+    width: 100px;
+    font-family: "Yu Gothic";
+}
