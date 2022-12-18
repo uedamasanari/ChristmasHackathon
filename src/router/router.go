@@ -23,7 +23,7 @@ func Initialize() *echo.Echo {
 	api.POST("/santa/new", controllers.CreateSanta)
 
 	api.POST("/child/new", controllers.CreateChild)
-	api.GET("/child/:parent_id", controllers.GetChildrenByParentID)
+	api.GET("/child/:santa_id", controllers.GetChildrenByParentID)
 	api.PUT("/child/:id", controllers.UpdateChild)
 	api.DELETE("/child/:id", controllers.DeleteChild)
 

@@ -45,3 +45,9 @@ services:
       - santa_mysql
     ports:
       - "1323:1323"
+  
+  santa_swagger:
+    image: swaggerapi/swagger-editor
+    container_name: santa_swagger
+    ports:
+      - "8888:8080"
