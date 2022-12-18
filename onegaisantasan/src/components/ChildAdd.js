@@ -1,32 +1,11 @@
-import React from "react";
-import { useState } from "react";
-import axios from "axios";
 import Header from "./Santa/Header"
-import ChildRen from "./Santa/ChildRen";
-import AddChildButton from "./Santa/AddChildButton";
+import AddName from "./Santa/AddName"
 import bell from './PNG/bell.png';
 import tree from './PNG/tree.png';
 import santa_tonakai from './PNG/santa_tonakai.png';
 import snowman from './PNG/snowman.png';
 import "./CSS/Santa.css"
-const Santa = () => {
-    let [children,setChildren] = useState([
-        {id:1,name:"たけし"},
-        {id:2,name:"みか"},
-        {id:3,name:"さとる"},
-        {id:4,name:"はなこ"}
-    ])
-    async function getData() {
-        try {
-          const response = await axios.get('https://example.com/api/endpoint');
-          console.log(response.data);
-        } catch (error) {
-          console.error(error);
-        }
-    }
-    const editname=()=>{
-        
-    }
+const ChildAdd = () => {
     return (
         <div>
             <Header />
@@ -36,10 +15,7 @@ const Santa = () => {
                     <img alt="tree" className="tree" src={tree} />
                 </div>
                 <div className="childrap">
-                    {children.map((child,index)=>(
-                        <ChildRen child={child} setChildren={setChildren} key={index}/>
-                    ))}
-                    <AddChildButton />
+                    <AddName />
                 </div>
                 <div className="rightside text_align_center">
                     <img alt="santa_tonakai" className="santa_tonakai" src={santa_tonakai} />
@@ -50,4 +26,4 @@ const Santa = () => {
     );
 };
 
-export default Santa;
+export default ChildAdd;
