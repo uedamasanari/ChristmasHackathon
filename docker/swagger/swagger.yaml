@@ -1,0 +1,226 @@
+openapi: 3.0.3
+info:
+  title: API doc for the Christmas hackathon
+  description: |-
+    Here is the list of API specification for お願いサンタさん
+  version: 1.0.0
+  
+tags:
+  - name: santa
+    description: Everything about santa
+  - name: child
+    description: Everything about children
+  - name: message
+    description: Everything about messages
+    
+paths:
+  /api/santa/new:
+    post:
+      tags:
+        - santa
+      summary: Create a new santa
+      description: Create a new santa
+      operationId: createSanta
+      requestBody:
+        description: Create a new santa
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/santa'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/santa' 
+                
+  /api/child/${santa_id}:
+    get:
+      tags:
+        - child
+      summary: Get a child by santa ID
+      description: Get a child by santa ID
+      operationId: getChildBySantaID
+      parameters:
+        - in: path
+          name: santa_id   # Note the name is the same as in the path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The santa ID
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/child' 
+               
+                
+  /api/child/new:
+    post:
+      tags:
+        - child
+      summary: Create a new child
+      description: Create a new child
+      operationId: createChild
+      requestBody:
+        description: Create a new child
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/child'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/child' 
+    
+                
+  /api/child/${id}:
+    put:
+      tags:
+        - child
+      summary: Update a child by santa ID
+      description: Update a child by santa ID
+      operationId: updateChildBySantaID
+      parameters:
+        - in: path
+          name: id   # Note the name is the same as in the path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The child ID
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/child' 
+                
+    delete:
+      tags:
+        - child
+      summary: Delete a child by santa ID
+      description: Delete a child by santa ID
+      operationId: deleteChildBySantaID
+      parameters:
+        - in: path
+          name: id   # Note the name is the same as in the path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The child ID
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/child' 
+                
+                
+  /api/message/${child_id}:
+    get:
+      tags:
+        - message
+      summary: Get a message by child ID
+      description: Get a child by santa ID
+      operationId: getChildBySantaID
+      parameters:
+        - in: path
+          name: child_id   # Note the name is the same as in the path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The child ID
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/message' 
+                
+    put:
+      tags:
+        - message
+      summary: Update a message by child ID
+      description: Update a child by santa ID
+      operationId: updateChildBySantaID
+      parameters:
+        - in: path
+          name: child_id   # Note the name is the same as in the path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The child ID
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/message' 
+
+components:
+  schemas:
+    santa:
+      type: object
+      properties:
+        id:
+          type: integer
+        email_address:
+          type: string
+        password:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    child:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        santa_id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    message:
+      type: object
+      properties:
+        id:
+          type: integer
+        present:
+          type: string
+        message:
+          type: string
+        child_id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+

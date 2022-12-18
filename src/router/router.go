@@ -19,7 +19,16 @@ func Initialize() *echo.Echo {
 	}))
 
 	api := e.Group("/api")
-	api.POST("/santas/new", controllers.CreateSanta)
+
+	api.POST("/santa/new", controllers.CreateSanta)
+
+	api.POST("/child/new", controllers.CreateChild)
+	api.GET("/child/:santa_id", controllers.GetChildrenByParentID)
+	api.PUT("/child/:id", controllers.UpdateChild)
+	api.DELETE("/child/:id", controllers.DeleteChild)
+
+	api.GET("/message/:child_id", controllers.GetMessageByChildID)
+	api.PUT("/message/:child_id", controllers.UpdateMessageByChildID)
 
 	return e
 
