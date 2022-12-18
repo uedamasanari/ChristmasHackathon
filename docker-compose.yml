@@ -47,7 +47,11 @@ services:
       - "1323:1323"
   
   santa_swagger:
-    image: swaggerapi/swagger-editor
+    image: swaggerapi/swagger-ui
     container_name: santa_swagger
+    environment:
+      API_URL: swagger.yaml
     ports:
       - "8888:8080"
+    volumes:
+      - ./docker/swagger/swagger.yaml:/usr/share/nginx/html/swagger.yaml
