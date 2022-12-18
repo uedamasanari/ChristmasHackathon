@@ -28,7 +28,7 @@ services:
       - santa_mysql
     environment:
       - PMA_ARBITRARY=1
-      - PMA_HOSTS=santa_mysql
+      - PMA_HOST=santa_mysql
       - PMA_USER=root
       - PMA_PASSWORD=root
     ports:

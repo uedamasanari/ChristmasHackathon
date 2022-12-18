@@ -19,14 +19,22 @@ const Santa = () => {
     ])
     const [Modal, open, close, isOpen] = useModal('root',{
         preventScroll: true,
+        focusTrapOptions: {
+            clickOutsideDeactivates: false,
+            onDeactivate: () => {},
+          },
       });
     async function getData() {
         try {
-          const response = await axios.get('https://example.com/api/endpoint');
+          const response = await axios.get(`http://localhost:8888/api/child/${children.id}`);
           console.log(response.data);
         } catch (error) {
           console.error(error);
         }
+    }
+    getData();
+    const openedit=()=>{
+
     }
     const editname=()=>{
 
@@ -47,10 +55,11 @@ const Santa = () => {
                     <div>Modal is Open? {isOpen ? 'Yes' : 'No'}</div>
                     <button onClick={open}>OPEN</button>
                     <Modal>
-                        <div>
-                        <h1>Title</h1>
-                        <p>This is a customizable modal.</p>
-                        <button onClick={close}>CLOSE</button>
+                        <div className="modal">
+                            <h1 className="changenametitle">名前の変更</h1>
+                            <div><input type="text" value="" /></div>
+                            <div><button onClick={editname}>変更</button></div>
+                            <div><button onClick={close}>戻る</button></div>
                         </div>
                     </Modal>
                 </div>
