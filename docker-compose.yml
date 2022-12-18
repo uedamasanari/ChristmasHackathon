@@ -20,6 +20,7 @@ services:
     ports:
       - "3306:3306"
     command: mysqld --user=root --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --secure-file-priv="/docker-entrypoint-initdb.d"
+
   santa_phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: santa_phpmyadmin
@@ -34,3 +35,13 @@ services:
       - "8080:80"
     volumes:
       - ./docker/phpmyadmin/sessions:/sessions
+
+  santa_server:
+    build: 
+      context: ./src
+      dockerfile: Dockerfile
+    container_name: santa_server
+    depends_on:
+      - santa_mysql
+    ports:
+      - "1323:1323"
