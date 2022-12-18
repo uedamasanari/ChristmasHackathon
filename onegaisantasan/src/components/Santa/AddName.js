@@ -1,11 +1,15 @@
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 import "../CSS/addname.css"
 import React, { useState } from "react";
 const GetMessage = () => {
     const [name, setName] = useState("");
     const navigation = useNavigate()
     const add=()=>{
-        navigation("/santa")
+        swal("追加しました！","","success")
+        .then((value) =>{
+            navigation("/santa")
+        })
     }
     return (
         <div className="addmessage">

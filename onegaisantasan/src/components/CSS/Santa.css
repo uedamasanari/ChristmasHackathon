@@ -36,4 +36,14 @@
     width:15vw;
     margin:3vh auto;
 }
-  
+.modal{
+    text-align: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 15px;
+    width: 50vw;
+    height: 50vh;
+}
+.changenametitle{
+
+}

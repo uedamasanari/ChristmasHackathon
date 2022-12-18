@@ -11,7 +11,7 @@ const Header = (props)  =>{
     return (
         <div className="children">
             <p className="name" onClick={check(props.child.id)}>{props.child.name}</p>
-            <img alt="edit" className="edit" src={edit} />
+            <img alt="edit" className="edit" src={edit} onClick={props.open}/>
             <img alt="delete" className="delete" src={deletepng} />
         </div>
     );
