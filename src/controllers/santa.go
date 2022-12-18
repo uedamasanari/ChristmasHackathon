@@ -10,9 +10,6 @@ import (
 	"github.com/uedamasanari/ChristmasHackathon/database"
 )
 
-//----------
-// Handlers
-//----------
 var db = database.Connect()
 var lock  = sync.Mutex{}
 
