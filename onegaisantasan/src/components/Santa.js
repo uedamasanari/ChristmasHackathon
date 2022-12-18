@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import axios from "axios";
 import Header from "./Santa/Header"
 import ChildRen from "./Santa/ChildRen";
 import AddChildButton from "./Santa/AddChildButton";
@@ -15,6 +16,17 @@ const Santa = () => {
         {id:3,name:"さとる"},
         {id:4,name:"はなこ"}
     ])
+    async function getData() {
+        try {
+          const response = await axios.get('https://example.com/api/endpoint');
+          console.log(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+    }
+    const editname=()=>{
+        
+    }
     return (
         <div>
             <Header />
@@ -25,7 +37,7 @@ const Santa = () => {
                 </div>
                 <div className="childrap">
                     {children.map((child,index)=>(
-                        <ChildRen child={child} setChildren={setChildren}/>
+                        <ChildRen child={child} setChildren={setChildren} key={index}/>
                     ))}
                     <AddChildButton />
                 </div>

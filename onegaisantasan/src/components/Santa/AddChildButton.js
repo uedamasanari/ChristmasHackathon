@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import "../CSS/addchildbutton.css"
 const AddChildButton = () => {
     return (
-        <div class="rectangle">
-        </div>
+        <Link to="/childadd">
+            <div className="rectangle"></div>
+        </Link>
     );
 };
 
