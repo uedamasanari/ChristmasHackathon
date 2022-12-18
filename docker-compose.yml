@@ -2,7 +2,7 @@ version: '3'
 
 services:
   santa_mysql:
-    image: mariadb:10.3
+    image: mysql:5.7
     container_name: santa_mysql
     platform: linux/amd64
     environment:
