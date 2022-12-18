@@ -11,12 +11,7 @@ import santa_tonakai from './PNG/santa_tonakai.png';
 import snowman from './PNG/snowman.png';
 import "./CSS/Santa.css"
 const Santa = () => {
-    let [children,setChildren] = useState([
-        {id:1,name:"たけし"},
-        {id:2,name:"みか"},
-        {id:3,name:"さとる"},
-        {id:4,name:"はなこ"}
-    ])
+    let [children,setChildren] = useState([])
     const [Modal, open, close, isOpen] = useModal('root',{
         preventScroll: true,
         focusTrapOptions: {
@@ -26,11 +21,12 @@ const Santa = () => {
       });
     async function getData() {
         try {
-          const response = await axios.get(`http://localhost:8888/api/child/${children.id}`);
-          console.log(response.data);
-        } catch (error) {
-          console.error(error);
-        }
+          const response = await axios.get('http://localhost:1323/api/child/1');
+            console.log(response.data);
+            setChildren(response.data);
+          } catch (error) {
+            console.error(error);
+          }
     }
     getData();
     const openedit=()=>{
@@ -52,7 +48,7 @@ const Santa = () => {
                         <ChildRen child={child} setChildren={setChildren} key={index}/>
                     ))}
                     <AddChildButton />
-                    <div>Modal is Open? {isOpen ? 'Yes' : 'No'}</div>
+                    {/* <div>Modal is Open? {isOpen ? 'Yes' : 'No'}</div>
                     <button onClick={open}>OPEN</button>
                     <Modal>
                         <div className="modal">
@@ -61,7 +57,7 @@ const Santa = () => {
                             <div><button onClick={editname}>変更</button></div>
                             <div><button onClick={close}>戻る</button></div>
                         </div>
-                    </Modal>
+                    </Modal> */}
                 </div>
                 <div className="rightside text_align_center">
                     <img alt="santa_tonakai" className="santa_tonakai" src={santa_tonakai} />
