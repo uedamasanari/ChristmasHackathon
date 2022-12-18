@@ -1,3 +1,4 @@
+import { Route, Routes, BrowserRouter } from "react-router-dom"
 import './App.css';
 import Santa from "./components/Santa";
 import PresentCheck from "./components/PresentCheck";
@@ -6,12 +7,14 @@ import ChildAdd from "./components/ChildAdd";
 
 function App() {
   return (
-    <div className="App">
-      {/* <Santa /> */}
-      {/* <PresentCheck /> */}
-      {/* <PresentPost /> */}
-      <ChildAdd />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/santa" element={<Santa />} />
+        <Route path="/presentcheck" element={<PresentCheck />} />
+        <Route path="/childadd" element={<ChildAdd />} />
+        <Route path="/presentpost" element={<PresentPost />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

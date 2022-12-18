@@ -13,3 +13,31 @@
 子どもログイン
     プレゼント概要送信
     ログアウト
+
+import axios from 'axios';
+
+async function getData() {
+  try {
+    const response = await axios.get('https://example.com/api/endpoint');
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+getData();
+
+import axios from 'axios';
+
+async function postData() {
+  try {
+    const response = await axios.post('https://example.com/api/endpoint', {
+      key: 'value'
+    });
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+postData();
