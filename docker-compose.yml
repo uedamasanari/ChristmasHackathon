@@ -24,6 +24,7 @@ services:
   santa_phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: santa_phpmyadmin
+    platform: linux/amd64
     depends_on:
       - santa_mysql
     environment:
@@ -41,6 +42,7 @@ services:
       context: ./src
       dockerfile: Dockerfile
     container_name: santa_server
+    platform: linux/amd64
     depends_on:
       - santa_mysql
     ports:
@@ -49,6 +51,7 @@ services:
   santa_swagger:
     image: swaggerapi/swagger-ui
     container_name: santa_swagger
+    platform: linux/amd64
     environment:
       API_URL: swagger.yaml
     ports:
