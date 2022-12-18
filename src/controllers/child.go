@@ -35,7 +35,7 @@ func GetChildrenByParentID(c echo.Context) error {
 	lock.Lock()
 	defer lock.Unlock()
 
-	ppid := c.Param("parent_id")
+	ppid := c.Param("santa_id")
 	pid, _ := strconv.Atoi(ppid)
 
 	chl := models.GetChildrenByParentID(pid)
