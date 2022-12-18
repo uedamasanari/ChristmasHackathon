@@ -1,0 +1,49 @@
+.allrap{
+    display: grid;
+    grid-template-columns: 25vw 50vw 25vw;
+    grid-template-rows: 100%;
+}
+.text_align_center{
+    text-align: center;
+}
+.leftside{
+    display:flex;
+    flex-flow: column;
+    grid-column: 1/2;
+    grid-row: 1/2;
+    width: 25vw;
+}
+.rightside{
+    display:flex;
+    flex-flow: column;
+    grid-column: 3/4;
+    grid-row: 1/2;
+    width: 25vw;
+}
+.bell{
+    width:15vw;
+    margin:3vh auto;
+}
+.tree{
+    width:15vw;
+    margin:3vh auto;
+}
+.santa_tonakai{
+    width:15vw;
+    margin:3vh auto;
+}
+.snowman{
+    width:15vw;
+    margin:3vh auto;
+}
+.modal{
+    text-align: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 15px;
+    width: 50vw;
+    height: 50vh;
+}
+.changenametitle{
+
+}

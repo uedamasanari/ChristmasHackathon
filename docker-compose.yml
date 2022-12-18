@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  santa_mysql:
+    image: mariadb:10.3
+    container_name: santa_mysql
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      TZ: 'Asia/Tokyo'
+      BIND_ADDRESS: 0.0.0.0
+    volumes:
+      - ./docker/db/data:/var/lib/mysql  
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/db/sql/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    command: mysqld --user=root --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --secure-file-priv="/docker-entrypoint-initdb.d"
+
+  santa_phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: santa_phpmyadmin
+    platform: linux/amd64
+    depends_on:
+      - santa_mysql
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=santa_mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+    ports:
+      - "8080:80"
+    volumes:
+      - ./docker/phpmyadmin/sessions:/sessions
+
+  santa_server:
+    build: 
+      context: ./src
+      dockerfile: Dockerfile
+    container_name: santa_server
+    platform: linux/amd64
+    depends_on:
+      - santa_mysql
+    ports:
+      - "1323:1323"
+  
+  santa_swagger:
+    image: swaggerapi/swagger-ui
+    container_name: santa_swagger
+    platform: linux/amd64
+    environment:
+      API_URL: swagger.yaml
+    ports:
+      - "8888:8080"
+    volumes:
+      - ./docker/swagger/swagger.yaml:/usr/share/nginx/html/swagger.yaml

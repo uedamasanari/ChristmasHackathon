@@ -1,0 +1,15 @@
+
+.headerrap{
+    position: relative;
+}
+.header{
+    width: 100%;
+    height:20vh;
+}
+.logout{
+    position:absolute;
+    width:100px;
+    height: 100px;
+    top:5vh;
+    right:5vh;
+}
