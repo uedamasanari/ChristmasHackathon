@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useModal } from 'react-hooks-use-modal';
 import axios from "axios";
 import Header from "./Santa/Header"
 import ChildRen from "./Santa/ChildRen";
@@ -16,6 +17,9 @@ const Santa = () => {
         {id:3,name:"さとる"},
         {id:4,name:"はなこ"}
     ])
+    const [Modal, open, close, isOpen] = useModal('root',{
+        preventScroll: true,
+      });
     async function getData() {
         try {
           const response = await axios.get('https://example.com/api/endpoint');
@@ -25,7 +29,7 @@ const Santa = () => {
         }
     }
     const editname=()=>{
-        
+
     }
     return (
         <div>
@@ -40,6 +44,15 @@ const Santa = () => {
                         <ChildRen child={child} setChildren={setChildren} key={index}/>
                     ))}
                     <AddChildButton />
+                    <div>Modal is Open? {isOpen ? 'Yes' : 'No'}</div>
+                    <button onClick={open}>OPEN</button>
+                    <Modal>
+                        <div>
+                        <h1>Title</h1>
+                        <p>This is a customizable modal.</p>
+                        <button onClick={close}>CLOSE</button>
+                        </div>
+                    </Modal>
                 </div>
                 <div className="rightside text_align_center">
                     <img alt="santa_tonakai" className="santa_tonakai" src={santa_tonakai} />
@@ -49,5 +62,4 @@ const Santa = () => {
         </div>
     );
 };
-
 export default Santa;
